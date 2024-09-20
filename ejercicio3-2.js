@@ -7,12 +7,12 @@ const secondInput = 1; // '1'
 const thirdInput = 11234; // '1-1-2-3-4'
 
 
-const SplitArray = (input) => {
+const splitArray = (input) => {
     let newString = input.toString();
     newArray = [...newString];
     return `${newArray.join("-")}`;
 }
 
-console.log(SplitArray(firstInput));
-console.log(SplitArray(secondInput));
-console.log(SplitArray(thirdInput));
+console.log(splitArray(firstInput));
+console.log(splitArray(secondInput));
+console.log(splitArray(thirdInput));

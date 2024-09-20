@@ -22,12 +22,4 @@ const user = {
     workSearch: true,
 }
 
-const bootcampProgram = user.bootcampThemes
-
-console.log(user.bootcampThemes)
-
-for (let bootcampThemes of bootcampProgram){
-    if (bootcampThemes.theme === 'React'){
-        document.write(`La fecha de inicio del tema ${bootcampThemes.theme} es el ${bootcampThemes.startDate}`);
-    }
-}
+console.log(user.bootcampThemes[2].startDate);
