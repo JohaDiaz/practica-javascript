@@ -36,7 +36,9 @@ const datos = [
 ];
 
 const developersList = (dato) => {
+
     return dato.filter(developers => developers.habilidades.includes('JavaScript'));
+    
 };
 const developersJavascript = developersList(datos);
 
