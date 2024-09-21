@@ -64,7 +64,13 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
-
+    const playlist = playlists.find(playlist => playlist.name === playlistName);
+    if (playlist) {
+      playlist.songs.push(song);
+      console.log("Agregue una cancion a una playlist")
+    } else {
+      throw new Error(`"${playlistName}" no ha sido encontrada.`);
+    }
   };
 
   /**
@@ -74,7 +80,12 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist or song is not found.
    */
   const removeSongFromPlaylist = (playlistName, title) => {
-    
+    const playlist = playlists.find(playlist => playlist.name === playlistName);
+    if (playlist) {
+      playlist.songs = playlist.songs.filter(song => song.title !== title);
+    } else {
+      throw new Error(`"${playlistName}" no ha sido encontrada.`);
+    }
   };
 
   /**
