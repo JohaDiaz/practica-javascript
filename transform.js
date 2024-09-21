@@ -36,7 +36,7 @@ const datos = [
 ];
 
 
-//He creado una función donde aplique "filter" para obtener solo los objetos "dato" que tengan dentro de las propiedades la clave "habilidades", y a su vez, se aplica "includes" para garantizar que tenga el valor "JavaScript" dentro de la propiedad habilidades. Los objetos dentro del array "datos" los he denominado developers. Con "filter" obtengo el dato.
+/*He creado una función donde aplique "filter" para obtener solo los objetos "dato" que tengan dentro de las propiedades la clave "habilidades", y a su vez, se aplica "includes" para garantizar que tenga el valor "JavaScript" dentro de la propiedad habilidades. Los objetos dentro del array "datos" los he denominado developers. Con "filter" obtengo el dato.*/
 
 const developersList = (dato) => {
 
@@ -47,7 +47,7 @@ const developersJavascript = developersList(datos);
 
 console.log(developersJavascript);
 
-//Una vez creada la función, debo inicializar un array vacio, donde se van a almacenar los nombres de los proyectos. Luego, aplico "map" a los objetos del array "datos", que me devuelve los datos con la clave "proyectos", y al mismo tiempo, aplico nuevamente "map" para obtener los valores de "proyectos". Con push, agrego los nombres de cada proyecto en el array "projectName".
+/*Una vez creada la función, debo inicializar un array vacio, donde se van a almacenar los nombres de los proyectos. Luego, aplico "map" a los objetos del array "datos", que me devuelve los datos con la clave "proyectos", y al mismo tiempo, aplico nuevamente "map" para obtener los valores de "proyectos". Con push, agrego los nombres de cada proyecto en el array "projectName".*/
 
 const projectsList = (dato) => {
     
