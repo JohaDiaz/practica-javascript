@@ -42,3 +42,5 @@ obtenerUsuario(1).then(usuario => {
 console.log(usuario);
 
 });
+
+/*El problema estaba en que se ha usado un "setTimeout" dentro de la función para ejecutar un código 2 segundos despues, pero la función "obtenerUsuario" se ejecutaba inmediatamente, sin esperar a que terminara la ejecución del código dentro del "setTimeout". Esto nos daba un resultado "undefined" porque en ese momento la variable usuario no tiene un valor asignado. Para resolver esto, he usado una promesa.*/
