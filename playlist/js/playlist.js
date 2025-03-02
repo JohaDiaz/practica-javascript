@@ -34,9 +34,7 @@ const musicCatalog = () => {
   const createPlaylist = (playlistName) => {
     //playlists.push(playlistName)
     console.log("entrando a crear la playlist");
-    
     playlists = [...playlists, {name: playlistName, songs:[]}];
-
     console.log("playlist creada", playlists);
   };
 
