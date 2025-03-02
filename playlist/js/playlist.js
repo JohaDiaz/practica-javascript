@@ -88,12 +88,20 @@ const musicCatalog = () => {
    */
   const removeSongFromPlaylist = (playlistName, title) => {
     const playlist = playlists.find(playlist => playlist.name === playlistName);
-    if (playlist) {
-      playlist.songs = playlist.songs.filter(song => song.title !== title);
-    } else {
-      throw new Error(`"${playlistName}" no ha sido encontrada.`);
+    if (!playlist) {
+        throw new Error(`Playlist \"${playlistName}\" no ha sido encontrada.`);
     }
-  };
+    if (!playlist.songs.some(song => song.title === title)) {
+        throw new Error(`La canción \"${title}\" no existe en la playlist \"${playlistName}\".`);
+    }
+
+    playlists = playlists.map(playlist =>
+        playlist.name === playlistName ? {
+            ...playlist,
+            songs: playlist.songs.filter(song => song.title !== title)
+        } : playlist
+    );
+};
 
   /**
    * Marks a song as a favorite or removes the favorite status.
