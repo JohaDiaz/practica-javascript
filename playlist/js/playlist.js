@@ -42,9 +42,12 @@ const musicCatalog = () => {
    * Gets all playlists in the catalog.
    * @returns {Playlist[]} The list of all playlists.
    */
-  const getAllPlaylists = () => {
-    return playlists;
-  };
+  const getAllPlaylists = () =>  {
+    return playlists.map(playlist => ({
+        ...playlist,
+        songs: [...playlist.songs] 
+    }));
+};
 
   /**
    * Removes a playlist from the catalog.
@@ -62,14 +65,20 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
-    const playlist = playlists.find(playlist => playlist.name === playlistName);
-    if (playlist) {
-      playlist.songs.push(song);
-      console.log("Agregue una cancion a una playlist")
-    } else {
-      throw new Error(`"${playlistName}" no ha sido encontrada.`);
+    if (!song.title || !song.artist || !song.genre || !song.duration) {
+        throw new Error("Los datos de la canción están incompletos.");
     }
-  };
+    if (!playlists.find(playlist => playlist.name === playlistName)) {
+        throw new Error(`Playlist \"${playlistName}\" no ha sido encontrada.`);
+    }
+    
+    playlists = playlists.map(playlist =>
+        playlist.name === playlistName ? {
+            ...playlist,
+            songs: [...playlist.songs, { ...song, favorite: false }]
+        } : playlist
+    );
+};
 
   /**
    * Removes a song from a specific playlist.
