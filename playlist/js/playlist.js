@@ -157,6 +157,7 @@ const musicCatalog = () => {
   };
 
   return { createPlaylist, addSongToPlaylist, removeSongFromPlaylist, sortSongs, getAllPlaylists, removePlaylist, favoriteSong };
+  
 };
 
 export default musicCatalog;
