@@ -47,7 +47,7 @@ const musicCatalog = () => {
         ...playlist,
         songs: [...playlist.songs] 
     }));
-};
+  };
 
   /**
    * Removes a playlist from the catalog.
@@ -78,7 +78,7 @@ const musicCatalog = () => {
             songs: [...playlist.songs, { ...song, favorite: false }]
         } : playlist
     );
-};
+  };
 
   /**
    * Removes a song from a specific playlist.
@@ -101,7 +101,7 @@ const musicCatalog = () => {
             songs: playlist.songs.filter(song => song.title !== title)
         } : playlist
     );
-};
+  };
 
   /**
    * Marks a song as a favorite or removes the favorite status.
@@ -109,10 +109,22 @@ const musicCatalog = () => {
    * @param {string} title - The title of the song to mark as a favorite.
    */
   const favoriteSong = (playlistName, title) => {
-      const playlist = playlists.find(playlist => playlist.name === playlistName);
-      const song = playlist.songs.find(song => song.title === title);
-      song.favorite = true;
-      console.log('Canción marcada como favorita:', song);
+    const playlist = playlists.find(playlist => playlist.name === playlistName);
+    if (!playlist) {
+        throw new Error(`Playlist \"${playlistName}\" no ha sido encontrada.`);
+    }
+    if (!playlist.songs.some(song => song.title === title)) {
+        throw new Error(`La canción \"${title}\" no existe en la playlist \"${playlistName}\".`);
+    }
+
+    playlists = playlists.map(playlist =>
+        playlist.name === playlistName ? {
+            ...playlist,
+            songs: playlist.songs.map(song =>
+                song.title === title ? { ...song, favorite: !song.favorite } : song
+            )
+        } : playlist
+    );
   };
 
   /**
